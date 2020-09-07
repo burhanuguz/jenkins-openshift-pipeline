@@ -5,10 +5,10 @@ metadata:
     description: "Example Jenkins Pipeline Template"
   name: example-jenkins-pipeline-template
 parameters:
-  - name: ENV-VAR-1
+  - name: ENV_VAR_1
     description: First env var
     required: true
-  - name: ENV-VAR-1
+  - name: ENV_VAR_2
     description: Second env var
     required: true
   - name: ENVIRONMENT
@@ -21,7 +21,7 @@ objects:
     name: example
     labels:
       app: hello-openshift
-    namespace: example-${APP_DOMAIN}
+    namespace: example-${ENVIRONMENT}
   spec:
     containers:
       - name: hello-openshift
@@ -29,7 +29,7 @@ objects:
         ports:
           - containerPort: 8080
         env:
-          - name: ENV-VAR-1
-            value: ${ENV-VAR-1}
-          - name: ENV-VAR-2
-            value: ${ENV-VAR-1}
+          - name: ENV_VAR_1
+            value: ${ENV_VAR_1}
+          - name: ENV_VAR_2
+            value: ${ENV_VAR_2}
