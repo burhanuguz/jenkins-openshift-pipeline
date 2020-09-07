@@ -4,7 +4,7 @@ metadata:
   name: example
   labels:
     app: hello-openshift
-  namespace: buro
+  namespace: example
 spec:
   containers:
     - name: hello-openshift
