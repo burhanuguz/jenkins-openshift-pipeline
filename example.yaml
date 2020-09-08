@@ -21,7 +21,7 @@ objects:
     name: example
     labels:
       app: hello-openshift
-    namespace: example-${ENVIRONMENT}
+    namespace: ${ENVIRONMENT}
   spec:
     containers:
       - name: hello-openshift
