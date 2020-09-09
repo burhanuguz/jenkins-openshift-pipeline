@@ -1,14 +1,15 @@
 # Jenkins Pipeline for deploying Apps different Environments on Openshift
 ## Prerequisites
-- [OpenShift Client Jenkins Plugin](https://plugins.jenkins.io/openshift-client)
+- [OpenShift Client Jenkins Plugin](https://plugins.jenkins.io/openshift-client) needs to be installed on Jenkins.
 ## Overview
 - In this explanation it is assumed that there are three different environments(dev, test, prod) in Openshift Cluster as namespaces.
 - Each environment assumed to be exactly same. They are considered to have different parameters for each environment. 
 - For each environment a branch is created. **master** branch is considered to be PROD, other branches are created with same names as environments. **test** branch for **TEST** and **dev** branch for **DEV** environment.
-- For each environment only one template file is used and environments variables only change.
-- This template file can be upgraded on DEV branch and  Because template is used in this example it would be applicable for much more complicated scenarios.  
+- For each environment only one template yaml file is used to create resources in openshift and only environments variables differ.
+- The main idea is doing upgrades on this template file that on DEV branch and after succesful attempts merging it with test, and master branch afterwards.
+- Template YAML file used in this example is pretty simle, it just creates pod. However, it would be applicable for much more complicated scenarios since you can create all resources template file.  
 - - -
-### Explanation
+### Deploying
 - Create **Namespaces** for each environments such as; **example-dev, example-test, example-prod** and one for serviceaccount **example**.
 ```bash
 oc create namespace example
