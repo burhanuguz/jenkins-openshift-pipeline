@@ -55,7 +55,7 @@ clusters:
 - cluster:
     certificate-authority-data: BASE64-encoded-certificate-authority-data
     server: https://api.<cluster_name>.<base_domain>:6443
-  name: hb
+  name: <cluster_name>
 ```
 ```bash
 echo BASE64-encoded-certificate-authority-data | base64 -d
