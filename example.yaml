@@ -20,11 +20,11 @@ objects:
   metadata:
     name: example
     labels:
-      app: hello-openshift
+      app: example
     namespace: ${ENVIRONMENT}
   spec:
     containers:
-      - name: hello-openshift
+      - name: example
         image: openshift/hello-openshift
         ports:
           - containerPort: 8080
