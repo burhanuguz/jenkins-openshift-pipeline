@@ -1,6 +1,4 @@
-
 # Jenkins Pipeline for deploying Apps different Environments on Openshift
-
 ## Prerequisites
 - [OpenShift Client Jenkins Plugin](https://plugins.jenkins.io/openshift-client)
 ## Overview
@@ -9,7 +7,7 @@
 - For each environment a branch is created. **master** branch is considered to be PROD, other branches are created with same names as environments. **test** branch for **TEST** and **dev** branch for **DEV** environment.
 - For each environment only one template file is used and environments variables only change.
 - This template file can be upgraded on DEV branch and  Because template is used in this example it would be applicable for much more complicated scenarios.  
-##
+- - -
 ### Explanation
 - Create **Namespaces** for each environments such as; **example-dev, example-test, example-prod** and one for serviceaccount **example**.
 ```bash
@@ -46,6 +44,7 @@ $(oc get serviceaccount -n example jenkins-sa -o jsonpath='{.secrets[0].name}') 
 </p>
 
 - Copy and paste **Server Certificate Authority** data from **kubeconfig** file and **Save** it afterwards.
+
 ![3](https://user-images.githubusercontent.com/59168275/92569726-a1f74680-f289-11ea-808f-a785ce726263.png)
 - Now open Jenkins Dashboard and create new **Pipeline**. 
 - Three pipeline created as **PROD**, **TEST** and **DEV** to make deploy on all environments at once. Configure it to use **Pipeline script from SCM** and also choose **git** as SCM. For each pipeline branch as in the picture. 
@@ -58,7 +57,6 @@ $(oc get serviceaccount -n example jenkins-sa -o jsonpath='{.secrets[0].name}') 
 </p>
 
 ![6](https://user-images.githubusercontent.com/59168275/92569733-a459a080-f289-11ea-83cc-b11f73772084.png)
-
-## 
+- - -
 ### Resources
 1. [https://github.com/openshift/jenkins-client-plugin](https://github.com/openshift/jenkins-client-plugin)
