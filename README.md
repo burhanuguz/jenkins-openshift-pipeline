@@ -1,4 +1,3 @@
-
 # Jenkins Pipeline for deploying Apps different Environments on Openshift
 ## Prerequisites
 - [OpenShift Client Jenkins Plugin](https://plugins.jenkins.io/openshift-client)
@@ -81,7 +80,7 @@ Example Output:
 
 ![3](https://user-images.githubusercontent.com/59168275/92569726-a1f74680-f289-11ea-808f-a785ce726263.png)
 - Now open Jenkins Dashboard and create new **Pipeline**. 
-- Three pipeline created as **PROD**, **TEST** and **DEV** to make deploy on all environments at once. Configure it to use **Pipeline script from SCM** and also choose **git** as SCM. For each pipeline branch as in the picture. 
+- Three pipeline created in this example as **PROD**, **TEST** and **DEV** to do deploy on all environments. Configure it to use **Pipeline script from SCM** and also choose **git** as SCM. For each pipeline use different branch(master-prod, test-test, dev-dev) as in the picture. 
 
 ![4](https://user-images.githubusercontent.com/59168275/92569727-a28fdd00-f289-11ea-92a4-2bc2aa785b05.png)
 - Start build for pipelines and pods will be deployed in **example-prod**, **example-test** and **example-dev** projects. 
