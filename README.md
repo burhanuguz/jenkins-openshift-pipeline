@@ -16,7 +16,7 @@
 - This template file can be upgraded on DEV branch and  Because template is used in this example it would be applicable for much more complicated scenarios.  
 ##
 ### Explanation
-- Create **Namespaces** for each environments such as; **example-dev, example-test, example-prod** and one for serviceaccount **example**
+- Create **Namespaces** for each environments such as; **example-dev, example-test, example-prod** and one for serviceaccount **example**.
 ```bash
 oc create namespace example
 oc create namespace example-dev
@@ -49,6 +49,7 @@ $(oc get serviceaccount -n example jenkins-sa -o jsonpath='{.secrets[0].name}') 
 <p align="center">
   <img width="589" height="442" src="https://user-images.githubusercontent.com/59168275/92569714-9f94ec80-f289-11ea-886f-c7da970990de.png">
 </p>
+
 - Copy and paste **Server Certificate Authority** data from **kubeconfig** file and **Save** it afterwards.
 ![3](https://user-images.githubusercontent.com/59168275/92569726-a1f74680-f289-11ea-808f-a785ce726263.png)
 - Now open Jenkins Dashboard and create new **Pipeline**. 
