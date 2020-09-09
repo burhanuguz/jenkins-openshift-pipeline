@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('Load ENV Vars') {
 			steps {
-				load 'prod-vars.groovy'
+				load 'env-vars.groovy'
 			}
 		}
 		stage('Deploy') {
