@@ -1,3 +1,4 @@
+
 # Jenkins Pipeline for deploying Apps different Environments on Openshift
 ## Prerequisites
 - [OpenShift Client Jenkins Plugin](https://plugins.jenkins.io/openshift-client)
@@ -43,7 +44,40 @@ $(oc get serviceaccount -n example jenkins-sa -o jsonpath='{.secrets[0].name}') 
   <img width="589" height="442" src="https://user-images.githubusercontent.com/59168275/92569714-9f94ec80-f289-11ea-886f-c7da970990de.png">
 </p>
 
-- Copy and paste **Server Certificate Authority** data from **kubeconfig** file and **Save** it afterwards.
+- Get **Server Certificate Authority** data from **kubeconfig** file.
+  - Below down example kubeconfig file and **BASE64-encoded-certificate-authority-data** is where you get the data you need.
+```yaml
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: BASE64-encoded-certificate-authority-data 
+    server: https://api.<cluster_name>.<base_domain>:6443
+  name: api-<cluster_name>-<base_domain>:6443
+- cluster:
+    certificate-authority-data: BASE64-encoded-certificate-authority-data
+    server: https://api.<cluster_name>.<base_domain>:6443
+  name: hb
+```
+```bash
+echo BASE64-encoded-certificate-authority-data | base64 -d
+```
+- It will give certificate chain consists of **kube-apiserver-localhost-signer**, **kube-apiserver-service-network-signer**, **kube-apiserver-lb-signer**. With that TLS errors will not happen.
+```bash
+Example Output:
+-----BEGIN CERTIFICATE-----
+................................................................
+................................................................
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+................................................................
+................................................................
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+................................................................
+................................................................
+-----END CERTIFICATE-----
+```
+- Paste the certificate chain to related section and **Save** it afterwards.
 
 ![3](https://user-images.githubusercontent.com/59168275/92569726-a1f74680-f289-11ea-808f-a785ce726263.png)
 - Now open Jenkins Dashboard and create new **Pipeline**. 
