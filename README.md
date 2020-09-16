@@ -19,13 +19,13 @@ oc create namespace example-prod
 ```
 - Then create **Serviceaccount** for Jenkins' OpenShift Client Plugin. 
 ```bash
-oc create -n example serviceaccount jenkins-ca
+oc create -n example serviceaccount jenkins-sa
 ```
 - Edit permission should be given to this service account.
 ```bash
-oc policy add-role-to-user edit system:serviceaccount:example:jenkins-ca -n example-dev
-oc policy add-role-to-user edit system:serviceaccount:example:jenkins-ca -n example-test
-oc policy add-role-to-user edit system:serviceaccount:example:jenkins-ca -n example-prod
+oc policy add-role-to-user edit system:serviceaccount:example:jenkins-sa -n example-dev
+oc policy add-role-to-user edit system:serviceaccount:example:jenkins-sa -n example-test
+oc policy add-role-to-user edit system:serviceaccount:example:jenkins-sa -n example-prod
 ```
 - Open Jenkins Dashboard and then get to Manage Jenkins->Configure-System. Get to **OpenShift Client Plugin** tab and click **Add Openshift Cluster**.
 - Type **Cluster Info** in that menu and then click to add credentials.
