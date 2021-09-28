@@ -12,7 +12,6 @@
 ### Deploying
 - Create **Namespaces** for each environments such as; **example-dev, example-test, example-prod** and one for serviceaccount **example**.
 ```bash
-oc create namespace example
 oc create namespace example-dev
 oc create namespace example-test
 oc create namespace example-prod
